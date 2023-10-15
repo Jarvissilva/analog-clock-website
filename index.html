@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #clock{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 60px;
+            border: 1px solid black;
+        }
+        #clock-hour-hand{
+            position: absolute;
+            top: 50px;
+            background: black;
+            width: 5px;
+            height: 100px;
+            transform-origin: bottom center;
+        }
+        #clock-hour-minutes{
+            position: absolute;
+            top: 50px;
+            background: black;
+            width: 2px;
+            height: 100px;
+            transform-origin: bottom center;
+        }
+        #clock-hour-seconds{
+            position: absolute;
+            top: 50px;
+            background: black;
+            width: 2px;
+            height: 100px;
+            transform-origin: bottom center;
+            /* transform: rotate(90deg); */
+        }
+        #clock-hour-hand span{
+            background: red;
+            width: 100%;
+            height: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="clock">
+            <div class="clock-hour" style="position: absolute;top: 10px;">12</div>
+            <div class="clock-hour" style="position: absolute;top: 26px; right: 75px;">1</div>
+            <div class="clock-hour" style="position: absolute;top: 75px; right: 26px;">2</div>
+
+            <div class="clock-hour" style="position: absolute;right: 10px;">3</div>
+            <div class="clock-hour" style="position: absolute;top:215px;right: 26px;">4</div>
+            <div class="clock-hour" style="position: absolute;bottom:26px;right: 75px;">5</div>
+            <div class="clock-hour" style="position: absolute;bottom: 10px;">6</div>
+            <div class="clock-hour" style="position: absolute;bottom: 26px; left: 75px;">7</div>
+            <div class="clock-hour" style="position: absolute;bottom: 75px; left: 26px;">8</div>
+            <div class="clock-hour" style="position: absolute;left: 10px;">9</div>
+            <div class="clock-hour" style="position: absolute;top:75px;left: 26px;">10</div>
+            <div class="clock-hour" style="position: absolute;top:26px;left: 75px;">11</div>
+
+            <div id="clock-hour-hand">
+            </div>
+            <div id="clock-hour-minutes">
+            </div>
+            <div id="clock-hour-seconds" style="background-color: red;">
+            </div>
+        </div>
+    </div>
+    <script>
+        const clockHourHand = document.getElementById("clock-hour-hand")
+        const clockMinuteHand = document.getElementById("clock-hour-minutes")
+
+
+        setInterval(() => {
+        const dateTime = new Date()
+        const currentHour = dateTime.getHours()
+        const currentMinutes = dateTime.getMinutes()
+        const currentSeconds = dateTime.getSeconds()
+
+        console.log(currentSeconds)
+
+        clockHourHand.style.rotate = currentHour * 30 + "deg"
+        clockMinuteHand.style.rotate = currentMinutes * 6 + "deg"
+        
+        const clockSecondHand = document.getElementById("clock-hour-seconds")
+            console.log('df')
+            document.getElementById("clock-hour-seconds").style.rotate = currentSeconds * 6 + "deg"
+        }, 1000);
+
+
+                
+    </script>
+</body>
+</html>
